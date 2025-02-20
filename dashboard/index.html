@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CRUT Dashboard - Campus Resource Utilization Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Leaflet CSS for interactive maps -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+    <header>
+        <h1>CRUT Dashboard</h1>
+        <p>Campus Resource Utilization Tracker</p>
+    </header>
+    <main>
+        <section id="chart-section">
+            <h2>Room Occupancy Rates</h2>
+            <div id="chart-container">
+                <canvas id="occupancyChart"></canvas>
+            </div>
+        </section>
+        <section id="map-section">
+            <h2>Facilities Map</h2>
+            <div id="map"></div>
+        </section>
+    </main>
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Leaflet JS for interactive maps -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
