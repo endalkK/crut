@@ -20,7 +20,7 @@ section {
     margin-bottom: 2em;
 }
 
-#chart-container {
+#chart-container, #pie-chart-container, #line-chart-container {
     width: 80%;
     margin: 0 auto;
 }

@@ -2,8 +2,8 @@
 -- CRUT: Campus Resource Utilization Tracker
 -- Index creation script for performance optimization
 
--- Create a spatial index on the geom column in Facilities
-CREATE INDEX idx_facilities_geom ON Facilities USING GIST (geom);
+-- Create a spatial index on the geom column in Buildings
+CREATE INDEX idx_buildings_geom ON Buildings USING GIST (geom);
 
 -- Index on Bookings start_time for efficient time-based queries
 CREATE INDEX idx_bookings_start_time ON Bookings (start_time);

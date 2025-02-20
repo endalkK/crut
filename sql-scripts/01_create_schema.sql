@@ -5,24 +5,23 @@
 -- Enable PostGIS extension for spatial data support
 CREATE EXTENSION IF NOT EXISTS postgis;
 
--- Create Facilities table with spatial data
-CREATE TABLE Facilities (
-    facility_id SERIAL PRIMARY KEY,
-    facility_name VARCHAR(100) NOT NULL,
-    building VARCHAR(100),
-    geom GEOMETRY(Point, 4326)  -- Stores latitude/longitude coordinates
+-- Create Buildings table with spatial data
+CREATE TABLE Buildings (
+    building_id SERIAL PRIMARY KEY,
+    building_name VARCHAR(100) NOT NULL,
+    geom GEOMETRY(Point, 4326)  -- Stores latitude/longitude coordinates for building location
 );
 
--- Create Rooms table with proper constraints
+-- Create Rooms table referencing Buildings
 CREATE TABLE Rooms (
     room_id SERIAL PRIMARY KEY,
-    facility_id INT REFERENCES Facilities(facility_id) ON DELETE CASCADE,
+    building_id INT REFERENCES Buildings(building_id) ON DELETE CASCADE,
     room_number VARCHAR(10) NOT NULL,
     capacity INT CHECK (capacity > 0),
     room_type VARCHAR(50)  -- e.g., Classroom, Lab, Lecture Hall
 );
 
--- Create Bookings table with a check to ensure valid time ranges
+-- Create Bookings table with time validity check
 CREATE TABLE Bookings (
     booking_id SERIAL PRIMARY KEY,
     room_id INT REFERENCES Rooms(room_id) ON DELETE CASCADE,
