@@ -1,6 +1,8 @@
 # CRUT: Campus Resource Utilization Tracker
 
-<video src="https://youtu.be/s4swhaX5oKI" width="100%" autoplay loop muted></video>
+Project Walkthrough
+[![CRUT Demo Video](https://youtu.be/s4swhaX5oKI)
+*Click the image above to watch the system in action.*
 
 **CRUT** is a spatial-database PoC designed to optimize campus facility management. By integrating live geospatial data with automated maintenance logic, it transforms passive building directories into active resource trackers.
 
