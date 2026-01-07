@@ -1,5 +1,7 @@
 # CRUT: Campus Resource Utilization Tracker
 
+<video src="Crut.mov" width="100%" autoplay loop muted></video>
+
 **CRUT** is a spatial-database PoC designed to optimize campus facility management. By integrating live geospatial data with automated maintenance logic, it transforms passive building directories into active resource trackers.
 
 ## Tech Stack & APIs
@@ -35,3 +37,5 @@
 - RBAC (Role-Based Access Control): Distinct interfaces for Students (booking/viewing) vs. Faculty/Officials (maintenance logs/analytics).
 
 - Institutional Security: Authentication via School Email (SSO/OAuth2) to ensure data privacy and accountability.
+
+- IT Ticketing Integration: CRUT can interface with platforms like ServiceNow or Jira to automatically generate work orders from the maintenance dashboard, creating a direct link between automated failure detection and technical response.
