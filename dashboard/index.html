@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>CRUT Dashboard - Campus Resource Utilization Tracker</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Leaflet CSS for interactive maps -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
 <body>
@@ -13,6 +12,12 @@
         <p>Campus Resource Utilization Tracker</p>
     </header>
     <main>
+        <div id="search-container" class="search-box-wrapper">
+            <input type="text" id="university-search" placeholder="Enter University Name (e.g., Stanford University)">
+            <button id="search-btn" onclick="updateDashboardForUniversity()">
+                <span>Build Dashboard</span>
+            </button>
+        </div>
         <section id="chart-section">
             <h2>Room Occupancy Rates</h2>
             <div id="chart-container">
@@ -23,19 +28,38 @@
             <h2>Buildings Map</h2>
             <div id="map"></div>
         </section>
-        <section id="additional-charts">
-            <h2>Additional Data Visualizations</h2>
-            <div id="pie-chart-container">
-                <canvas id="roomTypeChart"></canvas>
-            </div>
-            <div id="line-chart-container">
-                <canvas id="occupancyTrendChart"></canvas>
-            </div>
+        <section id="maintenance-log-section">
+        <h2>Critical Maintenance Log</h2>
+        <div id="maintenance-table-container">
+            <table id="maintenance-summary-table">
+                <thead>
+                    <tr>
+                        <th>Room Name</th>
+                        <th>Building</th>
+                        <th>Issue Type</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="maintenance-table-body">
+                    </tbody>
+            </table>
+        </div>
         </section>
+            <section id="additional-charts">
+                <h2>Maintainance and Failure Log</h2>
+                <div id="pie-chart-container">
+                    <canvas id="roomTypeChart"></canvas>
+                </div>
+                <div id="chart-container">
+                    <canvas id="occupancyTrendChart"></canvas>
+                </div>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+                <button id="export-btn" onclick="exportDashboardToPDF()">Download Report (PDF)</button>
+            </section>
     </main>
-    <!-- Chart.js for data visualization -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Leaflet JS for interactive maps -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="main.js"></script>
 </body>

@@ -1,5 +1,3 @@
--- 04_create_indexes.sql
--- CRUT: Campus Resource Utilization Tracker
 -- Index creation script for performance optimization
 
 -- Create a spatial index on the geom column in Buildings

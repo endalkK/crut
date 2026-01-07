@@ -1,5 +1,3 @@
--- 03_sample_queries.sql
--- CRUT: Campus Resource Utilization Tracker
 -- Sample queries for spatial search, occupancy summary, and scheduling conflict detection
 
 -- Sample Spatial Query: Find buildings within a specified radius (meters)

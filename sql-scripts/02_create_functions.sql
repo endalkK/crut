@@ -1,5 +1,3 @@
--- 02_create_functions.sql
--- CRUT: Campus Resource Utilization Tracker
 -- Functions and stored procedures for occupancy forecasting and maintenance scheduling
 
 -- Function to forecast room occupancy over the past 30 days
@@ -44,3 +42,24 @@ BEGIN
     END LOOP;
 END;
 $$;
+
+-- Function to get maintenance failure rate per building
+CREATE OR REPLACE FUNCTION get_building_failure_rate(p_building_id INT, p_days INT)
+RETURNS NUMERIC AS $$
+DECLARE
+    total_rooms INT;
+    failure_count INT;
+BEGIN
+    SELECT COUNT(*) INTO total_rooms FROM Rooms WHERE building_id = p_building_id;
+    
+    SELECT COUNT(*) INTO failure_count 
+    FROM Maintenance m
+    JOIN Rooms r ON m.room_id = r.room_id
+    WHERE r.building_id = p_building_id 
+      AND m.is_failure = TRUE
+      AND m.actual_completion_date >= NOW() - (p_days || ' days')::INTERVAL;
+
+    IF total_rooms = 0 THEN RETURN 0; END IF;
+    RETURN (failure_count::NUMERIC / total_rooms::NUMERIC);
+END;
+$$ LANGUAGE plpgsql;

@@ -1,5 +1,3 @@
--- 01_create_schema.sql
--- CRUT: Campus Resource Utilization Tracker
 -- Schema creation script for CRUT
 
 -- Enable PostGIS extension for spatial data support
@@ -39,3 +37,15 @@ CREATE TABLE Maintenance (
     maintenance_type VARCHAR(50),  -- e.g., Routine Check, Deep Cleaning
     status VARCHAR(50) CHECK (status IN ('Scheduled', 'Completed', 'Postponed'))
 );
+-- Maintanance 
+ALTER TABLE Maintenance 
+ADD COLUMN actual_completion_date DATE,
+ADD COLUMN cost NUMERIC(10, 2),
+ADD COLUMN is_failure BOOLEAN DEFAULT FALSE; -- TRUE if the room actually broke down
+
+-- Track if a maintenance event was a "Failure" (unplanned)
+ALTER TABLE Maintenance ADD COLUMN is_failure BOOLEAN DEFAULT FALSE;
+ALTER TABLE Maintenance ADD COLUMN resolution_notes TEXT;
+
+-- Index for the Line Chart queries
+CREATE INDEX idx_maintenance_failure ON Maintenance (is_failure) WHERE is_failure = TRUE;

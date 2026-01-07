@@ -1,4 +1,3 @@
-/* style.css for CRUT Dashboard */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -20,7 +19,7 @@ section {
     margin-bottom: 2em;
 }
 
-#chart-container, #pie-chart-container, #line-chart-container {
+#chart-container, #pie-chart-container, #chart-container {
     width: 80%;
     margin: 0 auto;
 }
@@ -30,4 +29,107 @@ section {
     height: 400px;
     margin: 0 auto;
     background-color: #e5e5e5;
+}
+#maintenance-summary-table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+#maintenance-summary-table th, #maintenance-summary-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+#maintenance-summary-table th {
+    background-color: #004d99;
+    color: white;
+}
+
+.status-badge {
+    background-color: #f0ad4e;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.85em;
+    font-weight: bold;
+}
+
+/* Container for the search bar */
+.search-box-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 25px;
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #e9ecef;
+    margin-bottom: 20px;
+}
+
+/* Stylizing the Input Field */
+#university-search {
+    width: 350px;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: 2px solid #ced4da;
+    border-radius: 30px; /* Rounded pill shape */
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Glow effect on Focus */
+#university-search:focus {
+    border-color: #004d99;
+    box-shadow: 0 0 8px rgba(0, 77, 153, 0.25);
+    width: 400px; /* Slight expansion effect */
+}
+
+/* Stylizing the Search Button */
+#search-btn {
+    padding: 12px 25px;
+    background-color: #004d99;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Button Hover & Active states */
+#search-btn:hover {
+    background-color: #003366;
+    transform: translateY(-2px); /* Lifts up slightly */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+#search-btn:active {
+    transform: translateY(0);
+}
+
+#export-btn {
+    padding: 10px 20px;
+    background-color: #28a745; /* Green color for 'Export' */
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 10px;
+    transition: all 0.3s ease;
+}
+
+#export-btn:hover {
+    background-color: #218838;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+#export-btn:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
 }

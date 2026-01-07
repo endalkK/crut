@@ -1,39 +1,37 @@
-# CRUT - Campus Resource Utilization Tracker
+# CRUT: Campus Resource Utilization Tracker
 
-## Overview
+**CRUT** is a spatial-database PoC designed to optimize campus facility management. By integrating live geospatial data with automated maintenance logic, it transforms passive building directories into active resource trackers.
 
-CRUT is a comprehensive system designed to monitor and optimize the usage of campus facilities—such as classrooms, labs, and lecture halls—at institutions like SUNY Plattsburgh. Leveraging PostgreSQL with PostGIS, CRUT uses advanced SQL queries, stored procedures, and functions to forecast room occupancy and schedule proactive maintenance. An interactive web-based dashboard now provides real-time insights through multiple data visualizations including:
+## Tech Stack & APIs
 
-- An occupancy histogram (bar chart)
-- A room type distribution pie chart
-- An occupancy trend line chart
-- An interactive map centered on SUNY Plattsburgh
+- Overpass API (OpenStreetMap): Dynamic fetching of global campus building footprints and metadata.
 
-...
+- PostGIS (PostgreSQL): Spatial indexing and proximity-based resource querying.
 
-## Setup Instructions
+- Leaflet.js: Interactive mapping and coordinate-based UI rendering.
 
-### Database Setup
+- Chart.js: Data visualization for occupancy trends and room-type distribution.
 
-1. **Install PostgreSQL and enable PostGIS.**
-2. **Execute the SQL scripts in order:**
-   - `01_create_schema.sql`
-   - `02_create_functions.sql`
-   - `03_sample_queries.sql`
-   - `04_create_indexes.sql`
+- html2canvas / jsPDF: Client-side reporting and automated PDF generation.
 
-### Dashboard Setup
+## Key Features
 
-1. Navigate to the `/dashboard` folder.
-2. Open `index.html` in your web browser.
-3. Explore the various charts and the map which now centers on SUNY Plattsburgh.
+- Global Search: Instantiate a dashboard for any university worldwide via the Overpass bridge.
 
-...
+- Failure Logic: Map markers dynamically turn Red when a building's internal failure rate exceeds threshold levels.
 
-## Future Enhancements
+- Predictive Maintenance: SQL triggers automatically flag high-usage rooms (>80% occupancy) for routine checks.
 
-- **Real-Time Data Integration:** Integrate IoT sensors for live occupancy tracking.
-- **Predictive Analytics:** Utilize machine learning to forecast facility usage.
-- **Mobile Application:** Develop a mobile app for real-time monitoring and booking.
-- **User Authentication & Notifications:** Add secure logins and automated alerts for scheduling conflicts or maintenance.
-- **Expanded Reporting:** Further enhance visualizations and reports with exportable formats.
+- 3D Trend Visualization: Stacked area charts provide a "depth" view of failure incidents over time.
+
+- Exportable Audits: Generate one-click maintenance reports for administrative review.
+
+## Proof of Concept (PoC) Constraints
+
+- This project serves as a technical demonstration. A production-ready implementation would require:
+
+- Restricted Scope: Removal of global search bars; instances would be locked to a single institution's domain.
+
+- RBAC (Role-Based Access Control): Distinct interfaces for Students (booking/viewing) vs. Faculty/Officials (maintenance logs/analytics).
+
+- Institutional Security: Authentication via School Email (SSO/OAuth2) to ensure data privacy and accountability.
